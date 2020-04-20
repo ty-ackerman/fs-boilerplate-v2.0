@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
 
 //db-name should match that in constants.js
-const uri = 'mongodb://localhost:27017/fullstack-app'
-// const {DB_URI} = require('../utils/constants')
+const { DB_URI } = require('../utils/constants')
 
 // Import all models
 const { Todo } = require('../models/Todo')
@@ -16,14 +15,10 @@ const truncateDatabaseTodo = async () => Promise.all([Todo.deleteMany()])
 // Make seeds
 const makeSeeds = async () => {
   // Connect to db
-  await mongoose.connect(uri, {
+  await mongoose.connect(DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-  // await mongoose.connect(DB_URI, {
-  //     useNewUrlParser: true,
-  //     useUnifiedTopology: true
-  // })
 
   // Clear dbs
   await truncateDatabaseTodo()
