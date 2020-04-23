@@ -2,6 +2,7 @@
   "name": "podcast-finder",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://www.tylerackerman.io",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -10,21 +11,23 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-jwt": "^5.3.3",
+    "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.9",
     "nodemon": "^2.0.3",
+    "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
-    "react-redux": "^7.2.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.0"
   },
   "proxy": "http://localhost:3001/",
   "scripts": {
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "server": "nodemon ./index.js --ignore src/",
+    "server": "nodemon api/app.js --ignore src/",
     "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -35,11 +38,7 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

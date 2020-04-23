@@ -34,7 +34,9 @@ export const removeTodo = todos => {
 export const loadTodos = () => {
   // BE
   return async (dispatch, getState) => {
-    const todos = (await axios.get('/todos')).data.data
+    const todos = (
+      await axios.get(`${process.env.REACT_APP_BACKEND_URL}/todos`)
+    ).data.data
     dispatch(getTodos(todos))
   }
 }
@@ -46,7 +48,11 @@ export const storeTodo = name => {
       name: name,
       done: false
     }
-    const todos = (await axios.post('/todos/add', { todo })).data.data
+    const todos = (
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/todos/add`, {
+        todo
+      })
+    ).data.data
     dispatch(saveTodo(todos))
   }
 }
@@ -54,15 +60,22 @@ export const storeTodo = name => {
 export const storeChecked = (_id, checked) => {
   // BE
   return async (dispatch, getState) => {
-    const todos = (await axios.patch(`/todos/checked/${_id}/${checked}`)).data
-      .data
+    const todos = (
+      await axios.patch(
+        `${process.env.REACT_APP_BACKEND_URL}/todos/checked/${_id}/${checked}`
+      )
+    ).data.data
     dispatch(checkTodo(todos))
   }
 }
 
 export const deleteTodo = _id => {
   return async (dispatch, getState) => {
-    const todos = (await axios.delete(`/todos/delete/${_id}`)).data.data
+    const todos = (
+      await axios.delete(
+        `${process.env.REACT_APP_BACKEND_URL}/todos/delete/${_id}`
+      )
+    ).data.data
     dispatch(removeTodo(todos))
   }
 }
