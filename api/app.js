@@ -29,7 +29,10 @@ app.use((error, req, res, next) => {
 })
 
 app.listen(PORT, async () => {
-  await mongoose.connect(DB_URI)
+  await mongoose.connect(DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   console.log(`App listening on port ${PORT}`)
 })
 
